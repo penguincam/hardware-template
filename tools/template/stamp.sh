@@ -113,5 +113,5 @@ fi
 echo "stamp: done. Next, in $dest:"
 echo "  just doctor && just hooks-install"
 echo "  edit ssot/constants/printers.dhall and ssot/constants/laser_vendors/ for your printers and vendor"
-echo "  git add -A && git commit -S -m \"chore: stamp $name from the hardware template\""
+echo "  git add -A && git commit -S -s -m \"chore: stamp $name from the hardware template\""
 echo "  git switch -c dev"
