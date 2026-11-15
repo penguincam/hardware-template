@@ -1,0 +1,33 @@
+"""hardware-template: parametric part design for 3D printing and sheet cutting.
+
+Geometry is build123d (Python, OCCT B-rep) driven by Dhall parameters. CAD and
+slicing checks are Bazel tests; binaries that are not yet hermetic
+(orca-slicer) come from the Nix devShell and their tests carry
+tags = ["external-tool"].
+"""
+
+module(
+    name = "hardware_template",
+    version = "0.1.0",
+)
+
+bazel_dep(name = "rules_python", version = "2.4.2")
+bazel_dep(name = "rules_shell", version = "0.8.0")
+bazel_dep(name = "bazel_skylib", version = "1.9.2")
+bazel_dep(name = "platforms", version = "1.1.0")
+
+bazel_dep(name = "buildifier_prebuilt", version = "8.5.1.2", dev_dependency = True)
+
+python = use_extension("@rules_python//python/extensions:python.bzl", "python")
+python.toolchain(
+    is_default = True,
+    python_version = "3.12",
+)
+
+pip = use_extension("@rules_python//python/extensions:pip.bzl", "pip")
+pip.parse(
+    hub_name = "pypi",
+    python_version = "3.12",
+    requirements_lock = "//tools/python:requirements_lock.txt",
+)
+use_repo(pip, "pypi")

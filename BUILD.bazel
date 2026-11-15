@@ -1,0 +1,51 @@
+load("@buildifier_prebuilt//:rules.bzl", "buildifier")
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
+
+package(default_visibility = ["//visibility:public"])
+
+exports_files([
+    # Read by the tools/bazel macros (cad_part mass, bed_fit_test, laser_sheet kerf).
+    "ssot/generated/constants.json",
+    "ssot/generated/materials.json",
+] + glob(
+    ["third_party/slicer_profiles/**/*.json"],
+    allow_empty = True,
+))
+
+# Slicer profiles the repo supplies (slice_check macro); empty in the template.
+filegroup(
+    name = "slicer_profiles",
+    srcs = glob(
+        ["third_party/slicer_profiles/**"],
+        allow_empty = True,
+    ),
+)
+
+buildifier(
+    name = "buildifier.check",
+    lint_mode = "warn",
+    mode = "diff",
+)
+
+buildifier(
+    name = "buildifier.fix",
+    lint_mode = "fix",
+    mode = "fix",
+)
+
+# Dhall renderer tests (dhall, dhall-to-json, dhall-to-yaml, jq, yq from the devShell).
+sh_test(
+    name = "ssot_test",
+    size = "medium",
+    srcs = ["tools/ssot/bazel_test.sh"],
+    data = glob([
+        "ssot/**",
+        "tools/ssot/**",
+    ]),
+    env_inherit = [
+        "PATH",
+        "HOME",
+        "XDG_CACHE_HOME",
+    ],
+    tags = ["external-tool"],
+)

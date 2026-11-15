@@ -1,0 +1,22 @@
+# gitleaks config: default rules plus a repo-specific allowlist.
+# Run: gitleaks git --config .gitleaks.toml
+title = "hardware-template gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Exports and lockfiles carry high-entropy strings that are not secrets."
+paths = [
+  '''third_party/slicer_profiles/.*\.json$''',
+  '''mods/.*/(CAD|STLs|3MF|DXF)/.*\.(step|stp|stl|3mf|dxf)$''',
+  '''tools/python/requirements_lock\.txt$''',
+  '''MODULE\.bazel\.lock$''',
+  '''flake\.lock$''',
+]
+regexes = [
+  # sha256 pins in READMEs and manifests
+  '''\b[0-9a-f]{64}\b''',
+  # git commit pins
+  '''\b[0-9a-f]{40}\b''',
+]

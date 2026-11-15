@@ -1,0 +1,21 @@
+# GENERATED from ssot/ by just ssot-render; do not hand-edit. Source: mods/example/sealed_box/mod.dhall
+'cad':
+  - 'CAD/sealed_box.py'
+'creator': 'example'
+'description': "A parametric printed box with a screwed lid, a PG9 cable gland hole and a TPU gasket in a rim groove. A starting point, not a tested enclosure."
+'docs': []
+'dxf': []
+'images': []
+'materials':
+  - 'ASA'
+  - 'TPU95A'
+'mod_version': 1
+'printers':
+  - 'example_small'
+  - 'example_large'
+'process':
+  - 'fdm'
+'slug': 'sealed_box'
+'stls': []
+'threemf': []
+'title': 'Sealed box with lid'

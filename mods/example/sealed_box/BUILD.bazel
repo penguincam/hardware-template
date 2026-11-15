@@ -1,0 +1,64 @@
+load("//tools/bazel:defs.bzl", "bed_fit_test", "cad_part", "metadata_test", "pytest_test")
+
+# Body, lid and gasket: STEP, binary STL, 3MF and a report each.
+# just export-print mods/example/sealed_box copies them into CAD/, STLs/ and 3MF/.
+cad_part(
+    name = "sealed_box",
+    src = "CAD/sealed_box.py",
+    data = ["//tools/fab:lib"],
+    material = "asa",
+    params = "params.json",
+)
+
+cad_part(
+    name = "sealed_box_lid",
+    src = "CAD/sealed_box.py",
+    data = ["//tools/fab:lib"],
+    fn = "build_lid",
+    material = "asa",
+    params = "params.json",
+)
+
+cad_part(
+    name = "sealed_box_gasket",
+    src = "CAD/sealed_box.py",
+    data = ["//tools/fab:lib"],
+    fn = "build_gasket",
+    material = "tpu95a",
+    params = "params.json",
+)
+
+[
+    bed_fit_test(
+        name = part + "_bed_fit_test",
+        size = "small",
+        printers = [
+            "example_small",
+            "example_large",
+        ],
+        report = ":" + part + ".report.json",
+    )
+    for part in [
+        "sealed_box",
+        "sealed_box_lid",
+        "sealed_box_gasket",
+    ]
+]
+
+metadata_test(
+    name = "metadata_test",
+    size = "small",
+)
+
+pytest_test(
+    name = "sealed_box_test",
+    size = "medium",
+    data = [
+        "CAD/sealed_box.py",
+        "params.json",
+        "test_sealed_box.py",
+        "//tools/fab:lib",
+    ],
+    paths = ["mods/example/sealed_box/test_sealed_box.py"],
+    deps = ["@pypi//build123d"],
+)

@@ -1,0 +1,20 @@
+load("//tools/bazel:defs.bzl", "pytest_test")
+
+package(default_visibility = ["//visibility:public"])
+
+# Sheet checks run by the laser_sheet and sheet_order_test macros.
+exports_files([
+    "dxf_lint.py",
+    "sheet_quote.py",
+])
+
+pytest_test(
+    name = "laser_tools_test",
+    size = "small",
+    data = glob(["*.py"]) + ["//:ssot/generated/constants.json"],
+    paths = [
+        "tools/laser/test_dxf_lint.py",
+        "tools/laser/test_sheet_quote.py",
+    ],
+    deps = ["@pypi//ezdxf"],
+)

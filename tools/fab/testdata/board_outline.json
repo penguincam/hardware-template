@@ -1,0 +1,26 @@
+{
+  "generated_from": "tools/fab/testdata (fixture for //tools/fab:features_test; the board_outline.json shape)",
+  "head": {
+    "connectors": [
+      {"d_mm": 12, "edge": "W", "h_mm": 9.9, "mate_dir": "-X", "name": "VIN_24V", "part": "Molex 43650-0200", "ref": "J1", "rot_deg": 90, "w_mm": 9, "x_mm": 6, "y_mm": 20},
+      {"d_mm": 6, "edge": "S", "h_mm": 6, "mate_dir": "-Y", "name": "I2C", "part": "JST SM04B-GHS-TB", "ref": "J2", "rot_deg": 0, "w_mm": 7.5, "x_mm": 30, "y_mm": 4}
+    ],
+    "corner_r_mm": 2,
+    "holes": [
+      {"d_mm": 2.7, "name": "H1", "pad_d_mm": 5, "x_mm": 3.5, "y_mm": 3.5},
+      {"d_mm": 2.7, "name": "H2", "pad_d_mm": 5, "x_mm": 48.5, "y_mm": 3.5},
+      {"d_mm": 2.7, "name": "H3", "pad_d_mm": 5, "x_mm": 3.5, "y_mm": 36.5},
+      {"d_mm": 2.7, "name": "H4", "pad_d_mm": 5, "x_mm": 48.5, "y_mm": 36.5}
+    ],
+    "keepouts": [
+      {"d_mm": 12, "layer": "all copper, both sides", "name": "antenna", "reason": "module antenna; no metal from the shell", "w_mm": 18, "x_mm": 12, "y_mm": 28}
+    ],
+    "max_component_height_bottom_mm": 1.5,
+    "max_component_height_top_mm": 10,
+    "outline_mm": [{"x_mm": 0, "y_mm": 0}, {"x_mm": 52, "y_mm": 0}, {"x_mm": 52, "y_mm": 40}, {"x_mm": 0, "y_mm": 40}],
+    "source": "test fixture, UNVERIFIED",
+    "thickness_mm": 1.6,
+    "variant": "HEAD",
+    "verified": false
+  }
+}

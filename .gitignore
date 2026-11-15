@@ -1,0 +1,40 @@
+# bazel
+bazel-*
+# direnv / nix
+.direnv/
+result
+result-*
+# python
+__pycache__/
+.venv/
+# editors / os
+.DS_Store
+*.swp
+.idea/
+.vscode/
+# local scratch
+/out/
+# secrets and local environment
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+# Agent files and the private SSOT overlay stay on a contributor's fork
+# (CONTRIBUTING.md, "Agent files"). The pre-push hook refuses them upstream.
+AGENTS.md
+CLAUDE.md
+CLAUDE.local.md
+GEMINI.md
+codex.md
+llms.txt
+.claude/
+.agents/
+.codex/
+.cursor/
+.gemini/
+.windsurf/
+agent-notes/
+skills/
+/policy/

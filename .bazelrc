@@ -1,0 +1,17 @@
+# Memory guards for a laptop-class host: cap the server heap, let idle servers
+# exit after 2 min, budget half of RAM for actions and run at most two tests at once.
+startup --host_jvm_args=-Xmx2g
+startup --max_idle_secs=120
+build --local_resources=memory=HOST_RAM*.5
+test --local_test_jobs=2
+common --enable_bzlmod
+common --lockfile_mode=update
+build --incompatible_strict_action_env
+build --disk_cache=~/.cache/bazel-hardware
+test --test_output=errors
+# Tests that call Nix devShell binaries (orca-slicer, dhall) carry
+# tags=["external-tool"]; run them only inside `nix develop` / direnv.
+test:hermetic --test_tag_filters=-external-tool
+# Build actions that call devShell binaries: bazelisk build --config=external //pkg:target
+build:external --action_env=PATH
+try-import %workspace%/.bazelrc.user

@@ -1,0 +1,5 @@
+# Exports are byte-exact artefacts.
+*.step -text
+*.stl binary
+*.3mf binary
+*.dxf -text

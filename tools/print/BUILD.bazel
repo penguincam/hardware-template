@@ -1,0 +1,20 @@
+load("//tools/bazel:defs.bzl", "pytest_test")
+
+package(default_visibility = ["//visibility:public"])
+
+# Print checks: mesh_check (just export-print, just mesh-check) and slice_report
+# (the slice_check macro). Both are stdlib only.
+exports_files([
+    "mesh_check.py",
+    "slice_report.py",
+])
+
+pytest_test(
+    name = "print_tools_test",
+    size = "small",
+    data = glob(["*.py"]) + ["//:ssot/generated/constants.json"],
+    paths = [
+        "tools/print/test_mesh_check.py",
+        "tools/print/test_slice_report.py",
+    ],
+)

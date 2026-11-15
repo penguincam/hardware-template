@@ -1,0 +1,137 @@
+{
+  "abs": {
+    "clearance_per_side_mm": 0.25,
+    "density_g_cm3": 1.04,
+    "hdt_c": 100,
+    "modulus_gpa": 2.25,
+    "name": "ABS",
+    "process": "Fdm",
+    "source": "Polymaker PolyLite ABS TDS V5.6 2025-12-30 https://polymaker.com/wp-content/uploads/lana-downloads/TDS_Polymaker_PolyLite-ABS_V5.6_2025-12-30_EN.pdf (ISO 527: E X-Y 2246.6, Z 2080.9 MPa; tensile X-Y 33.4, Z 29.7 MPa; HDT 100 C @0.45 MPa ISO 75; density 1.04 ISO 1183; nozzle 245-265 C, bed 90-100 C, fan off, chamber needed); z_ratio 0.4 is a design knock-down for an open-frame printer (TDS ratio 0.89 is from a 90 C chamber), UNVERIFIED; clearance 0.20-0.30 (tripo3d.ai, secondary)",
+    "tensile_xy_mpa": 33.4,
+    "z_ratio": 0.4
+  },
+  "acrylic3_cast": {
+    "clearance_per_side_mm": 0.2,
+    "density_g_cm3": 1.19,
+    "hdt_c": 95,
+    "kerf_mm": 0.15,
+    "modulus_gpa": 3.2,
+    "name": "3mm cast acrylic (PMMA)",
+    "process": "Laser",
+    "source": "kerf 0.12-0.22 CO2 (0.15 mid): https://box-studio.cc/blog/2026-05-en-kerf-reference-table-by-machine ; clearance 0.15-0.3: https://1cutfab.com/blogs/news/designing-notches-tabs-and-slots-for-laser-cut-assembly ; PMMA tensile ~70, modulus ~3.2, HDT ~95 UNVERIFIED generic; density g/cm3: UNVERIFIED cast PMMA 1.18-1.19",
+    "tensile_xy_mpa": 70,
+    "z_ratio": 1
+  },
+  "al1_5": {
+    "clearance_per_side_mm": 0.1,
+    "density_g_cm3": 2.68,
+    "hdt_c": 150,
+    "kerf_mm": 0.15,
+    "modulus_gpa": 70.3,
+    "name": "1.5mm aluminium 5052-H32",
+    "process": "Laser",
+    "source": "5052-H32 UTS 228 MPa, E 70.3 GPa (UNVERIFIED, from memory of MatWeb 5052-H32 https://www.matweb.com ); kerf ~0.1-0.2 fiber UNVERIFIED; hdt field is a service-temperature placeholder; density g/cm3: UNVERIFIED 5052 2.68",
+    "tensile_xy_mpa": 228,
+    "z_ratio": 1
+  },
+  "asa": {
+    "clearance_per_side_mm": 0.25,
+    "density_g_cm3": 1.07,
+    "hdt_c": 93,
+    "modulus_gpa": 1.6,
+    "name": "ASA",
+    "process": "Fdm",
+    "source": "Prusament ASA TDS https://prusament.com/wp-content/uploads/2022/10/ASA_Prusament_TDS_2022_16_EN.pdf (filament yield 40, modulus 1.6 XY, HDT 93 @0.45 MPa); z_ratio 0.29: https://www.cnckitchen.com/blog/comparing-pla-petg-amp-asa-feat-prusament ; clearance 0.20-0.30 (tripo3d.ai, secondary); density g/cm3: UNVERIFIED (from memory) Prusament ASA TDS 1.07",
+    "tensile_xy_mpa": 40,
+    "z_ratio": 0.29
+  },
+  "asa_gf": {
+    "clearance_per_side_mm": 0.25,
+    "density_g_cm3": 1.08,
+    "hdt_c": 88,
+    "modulus_gpa": 2.83,
+    "name": "ASA-GF",
+    "process": "Fdm",
+    "source": "RaccoonWorks ASA-GF product page https://3dimensionally.com/shop/raccoonworks-asa-gf-filament-1-75mm-1kg (read 2026-10-20, no TDS PDF: E 2826 +/- 56 MPa, tensile at break 46 MPa, elongation 2.43, flexural 69 MPa / 2860 MPa, HDT 88 C @0.45 MPa and 84 C @1.8 MPa, Vicat 98 C, Tg 101 C, density 1.08 ISO 1183; orientation not stated, taken as XY); cross-check Spectrum ASA-X GF10 TDS https://spectrumfilaments.com/wp-content/uploads/2023/11/en_tds_spectrum_asax_x_gf10.pdf (55 MPa, 2550 MPa, HDT 100 C, 1.11); z_ratio 0.30 design knock-down UNVERIFIED (unfilled ASA 0.29: https://www.cnckitchen.com/blog/comparing-pla-petg-amp-asa-feat-prusament ); shrinkage unpublished, generic ASA 0.4-0.7 % lowered by glass fill UNVERIFIED; clearance 0.20-0.30 (tripo3d.ai, secondary)",
+    "tensile_xy_mpa": 46,
+    "z_ratio": 0.3
+  },
+  "pa_cf": {
+    "clearance_per_side_mm": 0.2,
+    "density_g_cm3": 1.15,
+    "hdt_c": 120,
+    "modulus_gpa": 2.5,
+    "name": "PA-CF",
+    "process": "Fdm",
+    "source": "Prusament PA11 CF TDS (Scribd copy, horizontal yield 42, modulus 2.5; HDT 192 @0.45 conflicts, conservative 120 used: Prusa page quotes up to 122.5 C after annealing) https://prusament.com/materials/prusament-pa11/ ; z_ratio UNVERIFIED; dry before printing; density g/cm3: UNVERIFIED PA11-CF ~1.15",
+    "tensile_xy_mpa": 42,
+    "z_ratio": 0.6
+  },
+  "pctg": {
+    "clearance_per_side_mm": 0.3,
+    "density_g_cm3": 1.23,
+    "hdt_c": 70,
+    "modulus_gpa": 1.9,
+    "name": "PCTG",
+    "process": "Fdm",
+    "source": "UNVERIFIED generic ranges: modulus 1.8-2.3 GPa, HDT 65-80 @0.45 MPa per https://craftcloud3d.com/en/material-guide/pctg ; tensile and z_ratio UNVERIFIED (assumed ~PETG); impact ~24 kJ/m2 per CNC Kitchen; density g/cm3: UNVERIFIED (from memory) Prusament PCTG TDS 1.23",
+    "tensile_xy_mpa": 45,
+    "z_ratio": 0.5
+  },
+  "petg": {
+    "clearance_per_side_mm": 0.3,
+    "density_g_cm3": 1.27,
+    "hdt_c": 68,
+    "modulus_gpa": 1.5,
+    "name": "PETG",
+    "process": "Fdm",
+    "source": "Prusament PETG TDS v1.1 https://prusament.com/wp-content/uploads/2022/10/PETG_Prusament_TDS_2021_10_EN.pdf (yield 47 XY, modulus 1.5, HDT 68 @0.45 MPa); z_ratio 0.46: https://www.cnckitchen.com/blog/comparing-pla-petg-amp-asa-feat-prusament ; clearance 0.25-0.35 (tripo3d.ai, secondary); density g/cm3: UNVERIFIED (from memory) Prusament PETG TDS 1.27",
+    "tensile_xy_mpa": 47,
+    "z_ratio": 0.46
+  },
+  "pla": {
+    "clearance_per_side_mm": 0.15,
+    "density_g_cm3": 1.24,
+    "hdt_c": 55,
+    "modulus_gpa": 2.2,
+    "name": "PLA",
+    "process": "Fdm",
+    "source": "tensile/modulus/HDT: Prusament PLA TDS (UNVERIFIED, from memory: 57 MPa, 2.2 GPa, HDT 55); z_ratio 0.55: https://www.cnckitchen.com/blog/comparing-pla-petg-amp-asa-feat-prusament ; clearance: https://www.tripo3d.ai/blog/print-joints-keys-pins-alignment (secondary, 0.15-0.25); density g/cm3: UNVERIFIED (from memory) Prusament PLA TDS 1.24",
+    "tensile_xy_mpa": 57,
+    "z_ratio": 0.55
+  },
+  "ply3_birch": {
+    "clearance_per_side_mm": 0.1,
+    "density_g_cm3": 0.68,
+    "hdt_c": 100,
+    "kerf_mm": 0.18,
+    "modulus_gpa": 7,
+    "name": "3mm birch plywood",
+    "process": "Laser",
+    "source": "kerf 0.15-0.25 CO2 (0.18 mid): https://box-studio.cc/blog/2026-05-en-kerf-reference-table-by-machine and https://engraverhq.com/guides/laser-cutter-kerf/ ; press fit +0.1-0.2 interference (clearance field is the magnitude) https://1cutfab.com/blogs/news/designing-notches-tabs-and-slots-for-laser-cut-assembly ; tensile/modulus/HDT UNVERIFIED placeholders (wood: no HDT; z_ratio n/a = 1.0); density g/cm3: UNVERIFIED birch plywood 0.65-0.70",
+    "tensile_xy_mpa": 40,
+    "z_ratio": 1
+  },
+  "tpu90a": {
+    "clearance_per_side_mm": 0.3,
+    "density_g_cm3": 1.21,
+    "hdt_c": 55,
+    "modulus_gpa": 2.1e-2,
+    "name": "TPU90A",
+    "process": "Fdm",
+    "source": "Polymaker PolyFlex TPU90 TDS V5.6 2025-12-11 https://polymaker.com/wp-content/uploads/TDS_Polymaker_PolyFlex-TPU90_V5.6_2025-12-11_EN.pdf (density 1.21 g/cm3 ISO 1183, tensile 30.1 MPa X-Y ISO 37, stress at 100 % 7.1 MPa, Shore 90A ISO 7619-1); modulus 0.021 GPa ESTIMATED from the TPU95 TDS ratio (Young's 33.6, 100 % stress 11.1; https://wiki.polymaker.com/polymaker-products/more-about-our-products/documents/technical-data-sheets/tpu/polyflex-tm-tpu95) and Gent 1958 (20.8 MPa at 90A); HDT and z_ratio UNVERIFIED placeholders",
+    "tensile_xy_mpa": 30.1,
+    "z_ratio": 0.8
+  },
+  "tpu95a": {
+    "clearance_per_side_mm": 0.3,
+    "density_g_cm3": 1.22,
+    "hdt_c": 60,
+    "modulus_gpa": 3.0e-2,
+    "name": "TPU95A",
+    "process": "Fdm",
+    "source": "Polymaker PolyFlex TPU95 TDS V5.1 https://polymaker.com/wp-content/uploads/lana-downloads/PolyFlex_TPU95_TDS_V5.1.pdf (tensile 29.0 XY; Young's ~29-34 MPa); HDT and z_ratio UNVERIFIED placeholders; density g/cm3: UNVERIFIED PolyFlex TPU95 ~1.22",
+    "tensile_xy_mpa": 29,
+    "z_ratio": 0.8
+  }
+}

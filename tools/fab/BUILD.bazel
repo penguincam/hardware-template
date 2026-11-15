@@ -1,0 +1,44 @@
+load("//tools/bazel:defs.bzl", "pytest_test")
+
+package(default_visibility = ["//visibility:public"])
+
+# Reusable fab library (tools/fab/__init__.py lists the modules). Mods list
+# //tools/fab:lib in a cad_part's or pytest_test's data and import
+# `from tools.fab import ...` with the repo root on sys.path.
+filegroup(
+    name = "lib",
+    srcs = glob(
+        ["*.py"],
+        exclude = ["test_*.py"],
+    ) + ["//:ssot/generated/constants.json"],
+)
+
+exports_files([
+    # board_outline.json fixture: the shape the board_* builders read.
+    "testdata/board_outline.json",
+])
+
+pytest_test(
+    name = "lib_test",
+    size = "small",
+    data = [
+        "test_fab_lib.py",
+        ":lib",
+    ],
+    paths = ["tools/fab/test_fab_lib.py"],
+    deps = ["@pypi//build123d"],
+)
+
+# features: every builder measured (bbox, closed-form volume, ray walls, no overlaps)
+# against ssot/generated/constants.json (pilots, glands, inserts).
+pytest_test(
+    name = "features_test",
+    size = "medium",
+    data = [
+        "test_features.py",
+        "testdata/board_outline.json",
+        ":lib",
+    ],
+    paths = ["tools/fab/test_features.py"],
+    deps = ["@pypi//build123d"],
+)

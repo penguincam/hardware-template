@@ -1,0 +1,66 @@
+load("@rules_python//python:py_binary.bzl", "py_binary")
+load("@rules_python//python:py_library.bzl", "py_library")
+load("//tools/bazel:defs.bzl", "pytest_test")
+
+package(default_visibility = ["//visibility:public"])
+
+exports_files([
+    "bed_fit.py",
+    "cad_export.py",
+    "laser_export.py",
+    "metadata_check.py",
+    "pytest_main.py",
+    "orca_profiles.py",
+    "slice_check_test.py",
+    "stl_compare.py",
+])
+
+py_library(
+    name = "metadata_check_lib",
+    srcs = ["metadata_check.py"],
+    deps = ["@pypi//pyyaml"],
+)
+
+# Shared exporters used by the cad_part and laser_sheet macros (tools = [...]).
+py_binary(
+    name = "cad_export",
+    srcs = ["cad_export.py"],
+    deps = ["@pypi//build123d"],
+)
+
+py_binary(
+    name = "laser_export",
+    srcs = ["laser_export.py"],
+    deps = [
+        "@pypi//build123d",
+        "@pypi//ezdxf",
+    ],
+)
+
+# Unit tests for the macro helpers (bed fit math, metadata, slice budgets).
+pytest_test(
+    name = "tools_test",
+    size = "small",
+    data = glob(["*.py"]) + [
+        "//:ssot/generated/constants.json",
+        "//tools/print:slice_report.py",
+    ],
+    paths = ["tools/bazel/test_bazel_tools.py"],
+    deps = ["@pypi//pyyaml"],
+)
+
+# laser_export vendor handling (cut service nominal, shop kerf in CAD, dropped layers).
+pytest_test(
+    name = "laser_export_test",
+    size = "small",
+    data = [
+        "laser_export.py",
+        "test_laser_export.py",
+        "//:ssot/generated/constants.json",
+    ],
+    paths = ["tools/bazel/test_laser_export.py"],
+    deps = [
+        "@pypi//build123d",
+        "@pypi//ezdxf",
+    ],
+)
